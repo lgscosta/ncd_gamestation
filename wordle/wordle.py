@@ -3,11 +3,11 @@ import random
 
 # Dicionário de palavras
 dicionario = [
-    "abacaxi",
-    "abacate",
-    "abóbora",
-    "abóbora",
-    "abóbora",
+    "ramon",
+    "luana",
+    "teste",
+    "ncdcd",
+    "seila",
 ]
 
 # Inicializa o Pygame
