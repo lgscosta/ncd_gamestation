@@ -19,13 +19,13 @@ pygame.init()
 janela = pygame.display.set_mode((LARGURA, ALTURA))
 
 # Define o título da janela
-pygame.display.set_caption("Wordle")
+pygame.display.set_caption("Wordle - NCD GameStation")
 
 # Define a fonte
 fonte = pygame.font.Font(None, 20)
 
 # Carrega a lista de palavras
-palavras = ["casa", "amor", "gato", "carro", "bola"]
+palavras = ["ramon", "luana", "seila", "ncdcd", "teste"]
 
 # Gera uma palavra aleatória
 palavra_secreta = random.choice(palavras)
@@ -86,16 +86,16 @@ while True:
     # Atualiza a tela
     pygame.display.update()
 
-# Exibe a mensagem de vitória ou derrota
-if "_" not in letras_secretas:
-    text = "Você venceu!"
-    cor = VERDE
-else:
-    text = "Você perdeu!"
-    cor = VERMELHO
-texto = fonte.render(text, True, cor)
-janela.blit(texto, (100, 400))
-pygame.display.update()
+# # Exibe a mensagem de vitória ou derrota
+# if "_" not in letras_secretas:
+#     text = "Você venceu!"
+#     cor = VERDE
+# else:
+#     text = "Você perdeu!"
+#     cor = VERMELHO
+# texto = fonte.render(text, True, cor)
+# janela.blit(texto, (100, 400))
+# pygame.display.update()
 
 # Aguarda o usuário pressionar uma tecla
 while True:

@@ -1,72 +1,101 @@
 import pygame
-import random
 
-# Dicionário de palavras
-dicionario = [
-    "ramon",
-    "luana",
-    "teste",
-    "ncdcd",
-    "seila",
-]
-
-# Inicializa o Pygame
+# Inicializa o PyGame
 pygame.init()
 
-# Cria a tela do jogo
-tela = pygame.display.set_mode((500, 500))
+# Cria uma janela
+tela = pygame.display.set_mode((600, 600))
 
-# Cria o tabuleiro do jogo
-tabuleiro = []
+# Define a cor de fundo
+cor_fundo = (200, 200, 200)
+
+#  Cria o texto
+texto = pygame.font.SysFont("Arial", 20)
+
+# Define a cor dos quadrados
+cor_rosa = (255, 105, 180)
+
+# Define a largura da margem
+margem = 10
+
+# Cria uma matriz de quadrados
+quadrados = []
+
+palavras = []
 for i in range(5):
-    linha = []
-    for j in range(5):
-        linha.append(pygame.Surface((100, 100)))
-    tabuleiro.append(linha)
+    for j in range(6):
+        quadrados.append(pygame.Rect((i * 80 + margem, j * 80 + margem), (80 - 2 * margem, 80 - 2 * margem)))
 
-# Gera uma palavra aleatória
-palavra_secreta = dicionario[random.randint(0, len(dicionario) - 1)]
-
-# Inicia o jogo
-rodada = 1
+# Loop principal
 while True:
-    # Desenha o tabuleiro na tela
-    for i in range(5):
-        for j in range(5):
-            tabuleiro[i][j].fill((255, 255, 255))
-            tela.blit(tabuleiro[i][j], (i * 100, j * 100))
+    # Processa os eventos
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            exit()
 
-    # Mostra a mensagem de rodada
-    tela.blit(pygame.font.SysFont("Arial", 20).render(f"Rodada {rodada}", True, (0, 0, 0)), (200, 10))
+        # Se o usuário pressionou `Enter`,
+        # lê a string digitada
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_RETURN:
+                for palavra in palavras:
+                    palavra = pygame.event.wait().text.strip()
 
-    # Lê a entrada do jogador
-    palavra_inserida = input("Digite uma palavra de cinco letras: ")
+    # Limpa a tela
+    tela.fill(cor_fundo)
 
-    # Verifica se a palavra é válida
-    if len(palavra_inserida) != 5:
-        print("A palavra deve ter cinco letras.")
-        continue
-
-    # Verifica se a palavra é correta
-    if palavra_inserida == palavra_secreta:
-        print("Parabéns! Você acertou a palavra secreta!")
-        break
-
-    # Fornece feedback ao jogador
-    for i in range(5):
-        for j in range(5):
-            if palavra_inserida[i] == palavra_secreta[i]:
-                tabuleiro[i][j].fill((0, 255, 0))
-            elif palavra_inserida[i] in palavra_secreta:
-                tabuleiro[i][j].fill((255, 255, 0))
-            else:
-                tabuleiro[i][j].fill((255, 0, 0))
-
-    # Atualiza a rodada
-    rodada += 1
+    # Desenha os quadrados
+    for quadrado in quadrados:
+        pygame.draw.rect(tela, cor_rosa, quadrado)
+#        # Desenha o texto no meio do quadrado
+        # tela.blit(texto.render("A", True, (255, 255, 255)), (quadrado.centerx-8, quadrado.centery-10))
+        
+    # for palavra in palavras:
+    #     palavra = pygame.event.wait().text.strip()
+        
+    for palavra in palavras:
+        for i in palavra:
+            tela.blit(texto.render(i, True, (255, 255, 255)), (quadrado.centerx-8, quadrado.centery-10))
 
     # Atualiza a tela
     pygame.display.update()
 
-# Finaliza o Pygame
-pygame.quit()
+
+
+####################
+
+
+# import pygame
+
+# # Inicializa o Pygame
+# pygame.init()
+
+# # Cria a tela
+# tela = pygame.display.set_mode((640, 480))
+
+# # Define a cor de fundo
+# tela.fill((0, 0, 0))
+
+# # Cria o quadrado
+# quadrado = pygame.Rect((320, 240), (100, 100))
+
+# # Desenha o quadrado
+# pygame.draw.rect(tela, (255, 255, 255), quadrado)
+
+# # Cria o texto
+# texto = pygame.font.SysFont("Arial", 50)
+
+# # Desenha o texto no meio do quadrado
+# tela.blit(texto.render("A", True, (255, 0, 0)), (quadrado.centerx, quadrado.centery))
+
+# # Atualiza a tela
+# pygame.display.update()
+
+# # Loop principal
+# while True:
+#     for event in pygame.event.get():
+#         # Verifica se o usuário fechou a janela
+#         if event.type == pygame.QUIT:
+#             pygame.quit()
+#             sys.exit()
+
