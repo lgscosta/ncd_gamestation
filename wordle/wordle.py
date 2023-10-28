@@ -131,7 +131,6 @@ def create_new_letter():
         for letter in guess:
             letter.draw()
 
-# precisa
 def delete_letter():
     # Deletes the last letter from the guess.
     global current_guess_string, current_letter_bg_x
