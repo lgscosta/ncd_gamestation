@@ -54,3 +54,7 @@ Se você adivinhar a palavra corretamente antes de esgotar suas tentativas, voc�
 
 ## Desenvolvedor
 - Luana Gabriele de Sousa Costa
+
+### Verificar:
+- [ ] Usar a função reset antes de começar o loop principal ao invés de usar cada comando.
+- [ ] Usar dicionário ao invés de lista na lista de palavras

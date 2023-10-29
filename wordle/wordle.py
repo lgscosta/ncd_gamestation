@@ -6,7 +6,7 @@ from words import * # Dicionário de palavras (versão inicial)
 pygame.init()
 
 # Constantes
-width = 620
+width = 650
 height = 850
 screen = pygame.display.set_mode((width, height))
 bg = pygame.image.load("camada2.png")
@@ -45,6 +45,7 @@ guesses = [[]] * 6
 current_guess = []
 current_guess_string = ""
 current_letter_bg_x = 110
+indicators = []
 game_result = ""
 
 # Objeto Letra 
@@ -77,6 +78,50 @@ class Letter:
         pygame.draw.rect(screen, "white", self.bg_rect)
         pygame.draw.rect(screen, outline, self.bg_rect, 3)
         pygame.display.update()
+
+class Indicator:
+    def __init__(self, x, y, letter):
+        # Initializes variables such as color, size, position, and letter.
+        self.x = x
+        self.y = y
+        self.text = letter
+        self.rect = (self.x, self.y, 57, 75)
+        self.bg_color = filled_outline
+
+    def draw(self):
+        # Puts the indicator and its text on the screen at the desired position.
+        pygame.draw.rect(screen, self.bg_color, self.rect)
+        self.text_surface = availabe_letter_font.render(self.text, True, "white")
+        self.text_rect = self.text_surface.get_rect(center=(self.x+27, self.y+30))
+        screen.blit(self.text_surface, self.text_rect)
+        pygame.display.update()
+
+def initialize_indicators():
+    indicator_x = 25
+    indicator_y = 600
+
+    for letter in "QWERTYUIOP":
+        new_indicator = Indicator(indicator_x, indicator_y, letter)
+        indicators.append(new_indicator)
+        new_indicator.draw()
+        indicator_x += 60
+    indicator_y += 100
+    indicator_x = 50
+
+    for letter in "ASDFGHJKL":
+        new_indicator = Indicator(indicator_x, indicator_y, letter)
+        indicators.append(new_indicator)
+        new_indicator.draw()
+        indicator_x += 60
+    indicator_y += 100
+    indicator_x = 105
+
+    for letter in "ZXCVBNM":
+        new_indicator = Indicator(indicator_x, indicator_y, letter)
+        indicators.append(new_indicator)
+        new_indicator.draw()
+        indicator_x += 60
+    indicator_y += 100
 
 def check_guess(guess_to_check):
     global current_guess, current_guess_string, guesses_count, current_letter_bg_x, game_result
@@ -113,6 +158,7 @@ def reset():
     global guesses_count, correct_word, guesses, current_guess, current_guess_string, game_result
     screen.fill(red)
     screen.blit(bg, bg_frame)
+    initialize_indicators()
     guesses_count = 0
 
     correct_word = random.choice(WORDS)
@@ -145,6 +191,7 @@ def delete_letter():
     current_guess.pop()
     current_letter_bg_x -= letter_x_spacing
 
+initialize_indicators()
 while True:
     if game_result != "":
         play_again()
