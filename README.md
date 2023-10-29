@@ -31,6 +31,19 @@ Versão inicial, contendo apenas as seguintes funcionalidades:
 2. Uma palavra deve ser exibida em um tabuleiro de 6x5, com cada letra em uma caixa.
 3. O jogador deve poder inserir uma palavra de cinco letras no tabuleiro.
 
+## Segunda Entrega (E2)
+1. O jogo deve ter uma interface gráfica completa.
+2. O feedback deve ser exibido em cada caixa da palavra, indicando se a letra está correta, na posição correta ou na palavra, mas na posição errada.
+3. O jogo deve conter um mostrador na parte inferior das letras já utilizadas.
+
+## Terceira Entrega (E3)
+1. O jogo deve mostrar a quantidade de tentativas restantes para o jogador adivinhar a palavra.
+2. O jogo deve mostrar uma mensagem de vitória ou derrota quando o jogador adivinhar a palavra ou esgotar suas tentativas e o significado da palavra.
+
+## Entrega Extra (E4)
+1. O jogo deve ter uma versão de dueto, onde tenta-se adivinhar duas palavras simultaneamente.
+2. O jogo deve ter uma versão de quarteto, onde tenta-se adivinhar quatro palavras simultaneamente
+
 ## Como jogar
 O jogo é simples: você tem seis tentativas para adivinhar uma palavra de cinco letras. Cada vez que você insere uma palavra, o jogo fornece feedback sobre a posição e a presença das letras na palavra secreta.
 

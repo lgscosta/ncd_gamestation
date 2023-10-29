@@ -6,14 +6,17 @@ from words import * # Dicionário de palavras (versão inicial)
 pygame.init()
 
 # Constantes
-width = 650
+width = 620
 height = 850
 screen = pygame.display.set_mode((width, height))
+bg = pygame.image.load("camada2.png")
+bg_frame = bg.get_rect(center=(318, 301))
 pygame.display.set_caption("Wordle - NCD GameStation")
 
 # Cores 
 green = "#bcd246"
 yellow = "#f4ad42"
+red = "#c73d52"
 grey = "#787c7e"
 outline = "#d3d6da"
 filled_outline = "#4b8fbd"
@@ -27,7 +30,8 @@ guessed_letter_font = pygame.font.Font("Montserrat-Black.otf", 50)
 availabe_letter_font = pygame.font.Font("Montserrat-Black.otf", 25)
 
 # Inicialização da tela
-screen.fill("white")
+screen.fill(red)
+screen.blit(bg, bg_frame)
 pygame.display.update()
 
 # Espaçamento e tamanho de letra 
@@ -97,9 +101,9 @@ def check_guess(guess_to_check):
         game_result = "L"
 
 def play_again():
-    pygame.draw.rect(screen, "white", (10, 600, 1000, 600))
+    pygame.draw.rect(screen, red, (10, 600, 1000, 600))
     play_again_font = pygame.font.Font("Montserrat-Black.otf", 40)
-    play_again_text = play_again_font.render("Press ENTER to Play Again!", True, "black")
+    play_again_text = play_again_font.render("Aperte ENTER para jogar!", True, "white")
     play_again_rect = play_again_text.get_rect(center=(width/2, 700))
     screen.blit(play_again_text, play_again_rect)
     pygame.display.update()
@@ -107,7 +111,8 @@ def play_again():
 def reset():
     # Resets all global variables to their default states.
     global guesses_count, correct_word, guesses, current_guess, current_guess_string, game_result
-    screen.fill("white")
+    screen.fill(red)
+    screen.blit(bg, bg_frame)
     guesses_count = 0
 
     correct_word = random.choice(WORDS)
