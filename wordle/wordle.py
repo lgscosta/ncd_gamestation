@@ -13,7 +13,7 @@ wordle = pygame.image.load("wordle.png")
 wordle = pygame.transform.scale_by(wordle, 0.1)
 wordle_frame = wordle.get_rect(center=(318,30))
 bg = pygame.image.load("camada2.png")
-bg_frame = bg.get_rect(center=(318, 301))
+bg_frame = bg.get_rect(center=(318, 361))
 
 icon = pygame.image.load("gameStation.png")
 pygame.display.set_caption("Wordle - NCD GameStation")
@@ -92,43 +92,43 @@ class Indicator:
         self.x = x
         self.y = y
         self.text = letter
-        self.rect = (self.x, self.y, 57, 75)
+        self.rect = (self.x, self.y, 47, 55)
         self.bg_color = outline
 
     def draw(self):
         # Puts the indicator and its text on the screen at the desired position.
         pygame.draw.rect(screen, self.bg_color, self.rect)
         self.text_surface = availabe_letter_font.render(self.text, True, "white")
-        self.text_rect = self.text_surface.get_rect(center=(self.x+27, self.y+30))
+        self.text_rect = self.text_surface.get_rect(center=(self.x+22, self.y+20))
         screen.blit(self.text_surface, self.text_rect)
         pygame.display.update()
 
 def initialize_indicators():
-    indicator_x = 25
-    indicator_y = 600
+    indicator_x = 68
+    indicator_y = 660
 
     for letter in "QWERTYUIOP":
         new_indicator = Indicator(indicator_x, indicator_y, letter)
         indicators.append(new_indicator)
         new_indicator.draw()
-        indicator_x += 60
-    indicator_y += 100
-    indicator_x = 50
+        indicator_x += 50
+    indicator_y += 58
+    indicator_x = 88
 
     for letter in "ASDFGHJKL":
         new_indicator = Indicator(indicator_x, indicator_y, letter)
         indicators.append(new_indicator)
         new_indicator.draw()
-        indicator_x += 60
-    indicator_y += 100
-    indicator_x = 105
+        indicator_x += 50
+    indicator_y += 58
+    indicator_x = 143
 
     for letter in "ZXCVBNM":
         new_indicator = Indicator(indicator_x, indicator_y, letter)
         indicators.append(new_indicator)
         new_indicator.draw()
-        indicator_x += 60
-    indicator_y += 100
+        indicator_x += 50
+    indicator_y += 58
 
 def check_guess(guess_to_check):
     global current_guess, current_guess_string, guesses_count, current_letter_bg_x, game_result
@@ -175,7 +175,7 @@ def check_guess(guess_to_check):
         game_result = "L"
 
 def play_again():
-    pygame.draw.rect(screen, filled_outline, (10, 600, 1000, 600))
+    pygame.draw.rect(screen, filled_outline, (10, 660, 1000, 600))
     play_again_font = pygame.font.Font("Montserrat-Black.otf", 40)
     play_again_text = play_again_font.render("Aperte ENTER para jogar!", True, "white")
     play_again_rect = play_again_text.get_rect(center=(width/2, 700))
@@ -187,6 +187,7 @@ def reset():
     global guesses_count, correct_word, guesses, current_guess, current_guess_string, game_result
     screen.fill(filled_outline)
     screen.blit(bg, bg_frame)
+    screen.blit(wordle, wordle_frame)
     initialize_indicators()
     guesses_count = 0
 
@@ -203,7 +204,7 @@ def create_new_letter():
     # Creates a new letter and adds it to the guess.
     global current_guess_string, current_letter_bg_x
     current_guess_string += key_pressed
-    new_letter = Letter(key_pressed, (current_letter_bg_x, guesses_count*100+letter_y_spacing))
+    new_letter = Letter(key_pressed, (current_letter_bg_x, guesses_count*100+letter_y_spacing+60))
     current_letter_bg_x += letter_x_spacing
     guesses[guesses_count].append(new_letter)
     current_guess.append(new_letter)
