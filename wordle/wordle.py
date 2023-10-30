@@ -92,43 +92,43 @@ class Indicator:
         self.x = x
         self.y = y
         self.text = letter
-        self.rect = (self.x, self.y, 47, 55)
+        self.rect = (self.x, self.y, 40, 40)
         self.bg_color = outline
 
     def draw(self):
         # Puts the indicator and its text on the screen at the desired position.
         pygame.draw.rect(screen, self.bg_color, self.rect)
         self.text_surface = availabe_letter_font.render(self.text, True, "white")
-        self.text_rect = self.text_surface.get_rect(center=(self.x+22, self.y+20))
+        self.text_rect = self.text_surface.get_rect(center=(self.x+22, self.y+22))
         screen.blit(self.text_surface, self.text_rect)
         pygame.display.update()
 
 def initialize_indicators():
-    indicator_x = 68
+    indicator_x = 103
     indicator_y = 660
 
     for letter in "QWERTYUIOP":
         new_indicator = Indicator(indicator_x, indicator_y, letter)
         indicators.append(new_indicator)
         new_indicator.draw()
-        indicator_x += 50
-    indicator_y += 58
-    indicator_x = 88
+        indicator_x += 43
+    indicator_y += 46
+    indicator_x = 81
 
     for letter in "ASDFGHJKL":
         new_indicator = Indicator(indicator_x, indicator_y, letter)
         indicators.append(new_indicator)
         new_indicator.draw()
-        indicator_x += 50
-    indicator_y += 58
-    indicator_x = 143
+        indicator_x += 43
+    indicator_y += 46
+    indicator_x = 136
 
     for letter in "ZXCVBNM":
         new_indicator = Indicator(indicator_x, indicator_y, letter)
         indicators.append(new_indicator)
         new_indicator.draw()
-        indicator_x += 50
-    indicator_y += 58
+        indicator_x += 43
+    # indicator_y += 51
 
 def check_guess(guess_to_check):
     global current_guess, current_guess_string, guesses_count, current_letter_bg_x, game_result
