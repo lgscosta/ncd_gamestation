@@ -7,8 +7,8 @@ pygame.init()
 
 # Constantes
 width = 650
-height = 850
-screen = pygame.display.set_mode((width, height))
+height = 800
+screen = pygame.display.set_mode((width, height), pygame.RESIZABLE)
 wordle = pygame.image.load("wordle.png")
 wordle = pygame.transform.scale_by(wordle, 0.1)
 wordle_frame = wordle.get_rect(center=(318,30))
@@ -97,9 +97,9 @@ class Indicator:
 
     def draw(self):
         # Puts the indicator and its text on the screen at the desired position.
-        pygame.draw.rect(screen, self.bg_color, self.rect)
+        pygame.draw.rect(screen, self.bg_color, self.rect, 0, 3)
         self.text_surface = availabe_letter_font.render(self.text, True, "white")
-        self.text_rect = self.text_surface.get_rect(center=(self.x+22, self.y+22))
+        self.text_rect = self.text_surface.get_rect(center=(self.x+20, self.y+20))
         screen.blit(self.text_surface, self.text_rect)
         pygame.display.update()
 
@@ -113,7 +113,7 @@ def initialize_indicators():
         new_indicator.draw()
         indicator_x += 43
     indicator_y += 46
-    indicator_x = 81
+    indicator_x = 123
 
     for letter in "ASDFGHJKL":
         new_indicator = Indicator(indicator_x, indicator_y, letter)
@@ -121,14 +121,13 @@ def initialize_indicators():
         new_indicator.draw()
         indicator_x += 43
     indicator_y += 46
-    indicator_x = 136
+    indicator_x = 165
 
     for letter in "ZXCVBNM":
         new_indicator = Indicator(indicator_x, indicator_y, letter)
         indicators.append(new_indicator)
         new_indicator.draw()
         indicator_x += 43
-    # indicator_y += 51
 
 def check_guess(guess_to_check):
     global current_guess, current_guess_string, guesses_count, current_letter_bg_x, game_result
