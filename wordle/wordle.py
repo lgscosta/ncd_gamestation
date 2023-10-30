@@ -9,9 +9,15 @@ pygame.init()
 width = 650
 height = 850
 screen = pygame.display.set_mode((width, height))
+wordle = pygame.image.load("wordle.png")
+wordle = pygame.transform.scale_by(wordle, 0.1)
+wordle_frame = wordle.get_rect(center=(318,30))
 bg = pygame.image.load("camada2.png")
 bg_frame = bg.get_rect(center=(318, 301))
+
+icon = pygame.image.load("gameStation.png")
 pygame.display.set_caption("Wordle - NCD GameStation")
+pygame.display.set_icon(icon)
 
 # Cores 
 green = "#bcd246"
@@ -30,8 +36,9 @@ guessed_letter_font = pygame.font.Font("Montserrat-Black.otf", 50)
 availabe_letter_font = pygame.font.Font("Montserrat-Black.otf", 25)
 
 # Inicialização da tela
-screen.fill(red)
+screen.fill(filled_outline)
 screen.blit(bg, bg_frame)
+screen.blit(wordle, wordle_frame)
 pygame.display.update()
 
 # Espaçamento e tamanho de letra 
@@ -86,7 +93,7 @@ class Indicator:
         self.y = y
         self.text = letter
         self.rect = (self.x, self.y, 57, 75)
-        self.bg_color = filled_outline
+        self.bg_color = outline
 
     def draw(self):
         # Puts the indicator and its text on the screen at the desired position.
@@ -128,12 +135,34 @@ def check_guess(guess_to_check):
     game_decided = False
     for i in range(5):
         lowercase_letter = guess_to_check[i].text.lower()
-        
-        guess_to_check[i].bg_color = grey
-        guess_to_check[i].text_color = "white"
-        game_result = ""
-        game_decided = True
-
+        if lowercase_letter in correct_word:
+            if lowercase_letter == correct_word[i]:
+                guess_to_check[i].bg_color = green
+                for indicator in indicators:
+                    if indicator.text == lowercase_letter.upper():
+                        indicator.bg_color = green
+                        indicator.draw()
+                guess_to_check[i].text_color = "white"
+                if not game_decided:
+                    game_result = "W"
+            else:
+                guess_to_check[i].bg_color = yellow
+                for indicator in indicators:
+                    if indicator.text == lowercase_letter.upper():
+                        indicator.bg_color = yellow
+                        indicator.draw()
+                guess_to_check[i].text_color = "white"
+                game_result = ""
+                game_decided = True
+        else:
+            guess_to_check[i].bg_color = grey
+            for indicator in indicators:
+                if indicator.text == lowercase_letter.upper():
+                    indicator.bg_color = red
+                    indicator.draw()
+            guess_to_check[i].text_color = "white"
+            game_result = ""
+            game_decided = True
         guess_to_check[i].draw()
         pygame.display.update()
     
@@ -146,7 +175,7 @@ def check_guess(guess_to_check):
         game_result = "L"
 
 def play_again():
-    pygame.draw.rect(screen, red, (10, 600, 1000, 600))
+    pygame.draw.rect(screen, filled_outline, (10, 600, 1000, 600))
     play_again_font = pygame.font.Font("Montserrat-Black.otf", 40)
     play_again_text = play_again_font.render("Aperte ENTER para jogar!", True, "white")
     play_again_rect = play_again_text.get_rect(center=(width/2, 700))
@@ -156,7 +185,7 @@ def play_again():
 def reset():
     # Resets all global variables to their default states.
     global guesses_count, correct_word, guesses, current_guess, current_guess_string, game_result
-    screen.fill(red)
+    screen.fill(filled_outline)
     screen.blit(bg, bg_frame)
     initialize_indicators()
     guesses_count = 0
