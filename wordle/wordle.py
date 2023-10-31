@@ -8,7 +8,8 @@ pygame.init()
 # Constantes
 width = 650
 height = 800
-screen = pygame.display.set_mode((width, height), pygame.RESIZABLE)
+# screen = pygame.display.set_mode((width, height), pygame.RESIZABLE)
+screen = pygame.display.set_mode((width, height))
 wordle = pygame.image.load("wordle.png")
 wordle = pygame.transform.scale_by(wordle, 0.1)
 wordle_frame = wordle.get_rect(center=(318,30))
@@ -29,7 +30,7 @@ filled_outline = "#4b8fbd"
 
 # Escolha da palavra no dicionário
 correct_word = random.choice(WORDS)
-print(correct_word) # Print da primeira escolha de palavra, já que não há verificação ainda
+# print(correct_word) # Print da primeira escolha de palavra, já que não há verificação ainda
 
 # Definição da fonte usada no NCD
 guessed_letter_font = pygame.font.Font("Montserrat-Black.otf", 50)
@@ -191,7 +192,7 @@ def reset():
     guesses_count = 0
 
     correct_word = random.choice(WORDS)
-    print(correct_word)
+    # print(correct_word)
     
     guesses = [[]] * 6
     current_guess = []
