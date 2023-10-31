@@ -1,7 +1,7 @@
 import pygame
 import sys
 import random
-from words import * # Dicionário de palavras (versão inicial)
+from dictionary.words import * # Dicionário de palavras (versão inicial)
 
 pygame.init()
 
@@ -10,13 +10,13 @@ width = 650
 height = 800
 # screen = pygame.display.set_mode((width, height), pygame.RESIZABLE)
 screen = pygame.display.set_mode((width, height))
-wordle = pygame.image.load("wordle.png")
+wordle = pygame.image.load("img/wordle.png")
 wordle = pygame.transform.scale_by(wordle, 0.1)
 wordle_frame = wordle.get_rect(center=(318,30))
-bg = pygame.image.load("camada2.png")
+bg = pygame.image.load("img/background.png")
 bg_frame = bg.get_rect(center=(318, 361))
 
-icon = pygame.image.load("gameStation.png")
+icon = pygame.image.load("img/gameStation.png")
 pygame.display.set_caption("Wordle - NCD GameStation")
 pygame.display.set_icon(icon)
 
@@ -30,11 +30,10 @@ filled_outline = "#4b8fbd"
 
 # Escolha da palavra no dicionário
 correct_word = random.choice(WORDS)
-# print(correct_word) # Print da primeira escolha de palavra, já que não há verificação ainda
 
 # Definição da fonte usada no NCD
-guessed_letter_font = pygame.font.Font("Montserrat-Black.otf", 50)
-availabe_letter_font = pygame.font.Font("Montserrat-Black.otf", 25)
+guessed_letter_font = pygame.font.Font("font/Montserrat-Black.otf", 50)
+availabe_letter_font = pygame.font.Font("font/Montserrat-Black.otf", 25)
 
 # Inicialização da tela
 screen.fill(filled_outline)
@@ -176,7 +175,7 @@ def check_guess(guess_to_check):
 
 def play_again():
     pygame.draw.rect(screen, filled_outline, (10, 660, 1000, 600))
-    play_again_font = pygame.font.Font("Montserrat-Black.otf", 40)
+    play_again_font = pygame.font.Font("font/Montserrat-Black.otf", 40)
     play_again_text = play_again_font.render("Aperte ENTER para jogar!", True, "white")
     play_again_rect = play_again_text.get_rect(center=(width/2, 700))
     screen.blit(play_again_text, play_again_rect)
@@ -192,7 +191,6 @@ def reset():
     guesses_count = 0
 
     correct_word = random.choice(WORDS)
-    # print(correct_word)
     
     guesses = [[]] * 6
     current_guess = []
