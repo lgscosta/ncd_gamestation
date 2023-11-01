@@ -28,6 +28,8 @@ grey = "#787c7e"
 outline = "#d3d6da"
 filled_outline = "#4b8fbd"
 
+# dicionario = wordle()
+# print(dicionario)
 # Escolha da palavra no dicionário
 correct_word = random.choice(WORDS)
 
