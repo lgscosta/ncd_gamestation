@@ -36,7 +36,3 @@ def wordle():
 
 def hangman():
     return dicionario_ncd
-
-print(wordle())
-print("\n")
-print(hangman())
