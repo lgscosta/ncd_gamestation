@@ -62,8 +62,8 @@ Se você adivinhar a palavra corretamente antes de esgotar suas tentativas, voc�
 - [ ] Bug das letras depois de acertar
 
 
-
+<!-- 
 íóúéá
 êôâ
 ç
-ãõ
+ãõ -->
