@@ -40,9 +40,6 @@ def wordle_main(dictionary):
     for i in dictionary.values():
         MEANNINGS.append(i)
 
-    print(WORDS)
-    print(MEANNINGS)
-
     # Constantes
     width = 650
     height = 800
@@ -59,40 +56,14 @@ def wordle_main(dictionary):
     pygame.display.set_caption("Wordle - NCD GameStation")
     pygame.display.set_icon(icon)
 
-    # # Cores 
-    # green = "#bcd246"
-    # yellow = "#f4ad42"
-    # red = "#c73d52"
-    # grey = "#787c7e"
-    # outline = "#d3d6da"
-    # blue = "#4b8fbd"
-
     # Escolha da palavra no dicionário
     correct_word = random.choice(WORDS)
-
-    # # Definição da fonte usada no NCD
-    # guessed_letter_font = pygame.font.Font("font/Montserrat-Black.otf", 50)
-    # availabe_letter_font = pygame.font.Font("font/Montserrat-Black.otf", 25)
 
     # Inicialização da tela
     screen.fill(blue)
     screen.blit(bg, bg_frame)
     screen.blit(wordle, wordle_frame)
     pygame.display.update()
-
-    # # Espaçamento e tamanho de letra 
-    # letter_x_spacing = 85
-    # letter_y_spacing = 12
-    # letter_size = 75
-
-    # # Variáveis Globais
-    # guesses_count = 0
-    # guesses = [[]] * 6
-    # current_guess = []
-    # current_guess_string = ""
-    # current_letter_bg_x = 110
-    # indicators = []
-    # game_result = ""
 
     # Objeto Letra 
     class Letter:

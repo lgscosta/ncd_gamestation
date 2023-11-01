@@ -1,9 +1,40 @@
-luana: menina linda, exímia cientista da computação
-ramon: professor muito gente boa
-ccomp: apelido do curso de ciência da computação
-idoso: pessoa anciã
-whats: diminutivo de whatsapp
-insta: diminutivo de instagram
-gabriel: alguém muito especial <3
-cibersegurança: É importante tomar medidas de cibersegurança para proteger seus dados pessoais.
-privacidade: É importante proteger sua privacidade no mundo digital.
+idoso: Pessoa de idade avançada.
+insta: Abreviação comum para o Instagram, uma rede social de compartilhamento de fotos e vídeos.  
+ética: Princípios morais que guiam o comportamento humano. 
+senha: Combinação secreta de caracteres usada para proteger contas online. 
+vírus: Pequeno programa malicioso que pode danificar computadores ou dispositivos. 
+mídia: Meios de comunicação, como jornais, rádio, televisão e internet. 
+click: Ação de pressionar o botão do mouse ou tocar na tela para selecionar ou interagir com algo. 
+pixel: Ponto individual em uma tela, composto por cores para formar imagens. 
+gamer: Pessoa que joga videogames. 
+tweet: Mensagem curta postada no Twitter, geralmente com até 280 caracteres. 
+dados: Informações coletadas e armazenadas para diversos fins. 
+emoji: Pequenas imagens ou ícones usados para expressar emoções ou ideias em mensagens. 
+video: Sequência de imagens em movimento, geralmente com som.
+fotos: Imagens capturadas com uma câmera ou dispositivo.
+dever: Obrigação moral ou legal de fazer algo.
+legal: Conforme a lei ou regulamento.
+civil: Relacionado aos direitos e responsabilidades dos cidadãos em sociedade.
+votar: Participar de um processo de eleição para escolher um candidato ou opção.
+moral: Princípios que orientam o comportamento correto.
+regra: Diretriz ou instrução que deve ser seguida.
+nuvem: Armazenamento de dados online, acessível pela internet.
+email: Mensagem eletrônica enviada pela internet.
+mouse: Dispositivo de entrada de computador usado para mover o cursor na tela.
+cyber: Prefixo relacionado à tecnologia e ao mundo digital.
+linux: Sistema operacional de código aberto.
+skype: Aplicativo de comunicação por vídeo e voz.
+flash: Uma fonte de luz intensa usada para iluminar uma cena ou objeto ao tirar uma foto em condições de pouca luz.
+adobe: Empresa de software que desenvolve programas como o Photoshop e o Acrobat.
+cache: Local de armazenamento temporário de dados para acelerar o acesso.
+steam: Plataforma de distribuição de jogos online.
+mysql: Sistema de gerenciamento de banco de dados.
+drive: Armazenamento online da Google.
+smart: Inteligente ou conectado à internet, como "smartphones" ou "smart TVs".
+ifood: Plataforma de entrega de comida online.
+shein: Empresa de moda e comércio eletrônico.
+canva: Ferramenta de design gráfico online.
+redes: Estruturas interconectadas, como redes sociais ou redes de computadores.
+clips: Pequenos trechos de áudio ou vídeo.
+gvbus: Nome do sistema de transporte público da Grande Vitória.
+jogos: Atividades de entretenimento competitivas ou recreativas.

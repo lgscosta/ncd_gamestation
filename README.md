@@ -23,7 +23,7 @@ Para instalar a biblioteca Pygame, siga estas etapas:
 Um jogo de adivinhação de palavras de cinco letras.
 
 ## Executando o Jogo
-```python3 wordle.py```
+```python3 ncd_gamestation.py```
 
 ## Primeira Entrega (E1)
 Versão inicial, contendo apenas as seguintes funcionalidades:
@@ -37,12 +37,12 @@ Versão inicial, contendo apenas as seguintes funcionalidades:
 -[x] O jogo deve conter um mostrador na parte inferior das letras já utilizadas.
 
 ## Terceira Entrega (E3)
--[ ] O jogo deve ter um dicionário de palavras de 5 letras que tenha conceitos de cidadania digital.
+-[x] O jogo deve ter um dicionário de palavras de 5 letras que tenha conceitos de cidadania digital.
 -[ ] O jogo deve mostrar uma mensagem de vitória ou derrota quando o jogador adivinhar a palavra ou esgotar suas tentativas e o significado da palavra.
 
 ## Entrega Extra (E4)
 -[ ] O jogo deve ter uma versão de dueto, onde tenta-se adivinhar duas palavras simultaneamente.
--[ ] O jogo deve ter uma versão de quarteto, onde tenta-se adivinhar quatro palavras simultaneamente
+-[ ] O jogo deve ter dicas.
 
 ## Como jogar
 O jogo é simples: você tem seis tentativas para adivinhar uma palavra de cinco letras. Cada vez que você insere uma palavra, o jogo fornece feedback sobre a posição e a presença das letras na palavra secreta.
@@ -60,3 +60,10 @@ Se você adivinhar a palavra corretamente antes de esgotar suas tentativas, voc�
 - [ ] Usar dicionário ao invés de lista na lista de palavras
 - [ ] Não desenhe diretamente na tela, mas em outra superfície. Em seguida, dimensione essa outra superfície para o tamanho da tela e cegue-a na tela. (solução para redmensionar)
 - [ ] Bug das letras depois de acertar
+
+
+
+íóúéá
+êôâ
+ç
+ãõ

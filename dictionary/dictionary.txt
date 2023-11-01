@@ -5,3 +5,5 @@ idoso: pessoa anciã
 whats: diminutivo de whatsapp
 insta: diminutivo de instagram
 gabriel: alguém muito especial <3
+cibersegurança: É importante tomar medidas de cibersegurança para proteger seus dados pessoais.
+privacidade: É importante proteger sua privacidade no mundo digital.
