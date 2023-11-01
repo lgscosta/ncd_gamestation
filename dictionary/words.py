@@ -1,15 +1,3 @@
-WORDS = [
-    'ramon',
-    'luana',
-    'seila',
-    'ratos',
-    'gabri',
-    'ncdcd',
-    'helpm',
-    'ccomp',
-    'ufess'
-]
-
 file = open('dictionary.txt','r')
 linhas = file.read().split("\n")
 

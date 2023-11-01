@@ -4,15 +4,41 @@ import random
 
 pygame.init()
 
-def wordle_main(dictionary):
-    WORDS = []
-    MEANNINGS = []
+WORDS = []
+MEANNINGS = []
 
+# Cores 
+green = "#bcd246"
+yellow = "#f4ad42"
+red = "#c73d52"
+grey = "#787c7e"
+outline = "#d3d6da"
+blue = "#4b8fbd"
+
+# Definição da fonte usada no NCD
+guessed_letter_font = pygame.font.Font("font/Montserrat-Black.otf", 50)
+availabe_letter_font = pygame.font.Font("font/Montserrat-Black.otf", 25)
+
+# Espaçamento e tamanho de letra 
+letter_x_spacing = 85
+letter_y_spacing = 12
+letter_size = 75
+
+# Variáveis Globais
+guesses_count = 0
+guesses = [[]] * 6
+current_guess = []
+current_guess_string = ""
+current_letter_bg_x = 110
+indicators = []
+game_result = ""
+
+def wordle_main(dictionary):
     for i in dictionary.keys():
         WORDS.append(i)
 
     for i in dictionary.values():
-        WORDS.append(i)
+        MEANNINGS.append(i)
 
     print(WORDS)
     print(MEANNINGS)
@@ -33,22 +59,20 @@ def wordle_main(dictionary):
     pygame.display.set_caption("Wordle - NCD GameStation")
     pygame.display.set_icon(icon)
 
-    # Cores 
-    green = "#bcd246"
-    yellow = "#f4ad42"
-    red = "#c73d52"
-    grey = "#787c7e"
-    outline = "#d3d6da"
-    blue = "#4b8fbd"
+    # # Cores 
+    # green = "#bcd246"
+    # yellow = "#f4ad42"
+    # red = "#c73d52"
+    # grey = "#787c7e"
+    # outline = "#d3d6da"
+    # blue = "#4b8fbd"
 
-    # dicionario = wordle()
-    # print(dicionario)
     # Escolha da palavra no dicionário
     correct_word = random.choice(WORDS)
 
-    # Definição da fonte usada no NCD
-    guessed_letter_font = pygame.font.Font("font/Montserrat-Black.otf", 50)
-    availabe_letter_font = pygame.font.Font("font/Montserrat-Black.otf", 25)
+    # # Definição da fonte usada no NCD
+    # guessed_letter_font = pygame.font.Font("font/Montserrat-Black.otf", 50)
+    # availabe_letter_font = pygame.font.Font("font/Montserrat-Black.otf", 25)
 
     # Inicialização da tela
     screen.fill(blue)
@@ -56,19 +80,19 @@ def wordle_main(dictionary):
     screen.blit(wordle, wordle_frame)
     pygame.display.update()
 
-    # Espaçamento e tamanho de letra 
-    letter_x_spacing = 85
-    letter_y_spacing = 12
-    letter_size = 75
+    # # Espaçamento e tamanho de letra 
+    # letter_x_spacing = 85
+    # letter_y_spacing = 12
+    # letter_size = 75
 
-    # Variáveis Globais
-    guesses_count = 0
-    guesses = [[]] * 6
-    current_guess = []
-    current_guess_string = ""
-    current_letter_bg_x = 110
-    indicators = []
-    game_result = ""
+    # # Variáveis Globais
+    # guesses_count = 0
+    # guesses = [[]] * 6
+    # current_guess = []
+    # current_guess_string = ""
+    # current_letter_bg_x = 110
+    # indicators = []
+    # game_result = ""
 
     # Objeto Letra 
     class Letter:
@@ -204,9 +228,6 @@ def wordle_main(dictionary):
         screen.blit(wordle, wordle_frame)
         initialize_indicators()
         guesses_count = 0
-
-        correct_word = random.choice(WORDS)
-        
         guesses = [[]] * 6
         current_guess = []
         current_guess_string = ""
@@ -246,6 +267,7 @@ def wordle_main(dictionary):
                 if event.key == pygame.K_RETURN:
                     if game_result != "":
                         reset()
+                        correct_word = random.choice(WORDS)
                     else:
                         if len(current_guess_string) == 5:
                             check_guess(current_guess)
