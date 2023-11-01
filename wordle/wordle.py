@@ -2,23 +2,6 @@ import pygame
 import sys
 import random
 
-pygame.init()
-
-WORDS = []
-MEANNINGS = []
-
-# Cores 
-green = "#bcd246"
-yellow = "#f4ad42"
-red = "#c73d52"
-grey = "#787c7e"
-outline = "#d3d6da"
-blue = "#4b8fbd"
-
-# Definição da fonte usada no NCD
-guessed_letter_font = pygame.font.Font("font/Montserrat-Black.otf", 50)
-availabe_letter_font = pygame.font.Font("font/Montserrat-Black.otf", 25)
-
 # Espaçamento e tamanho de letra 
 letter_x_spacing = 85
 letter_y_spacing = 12
@@ -34,6 +17,11 @@ indicators = []
 game_result = ""
 
 def wordle_main(dictionary):
+    pygame.init()
+
+    WORDS = []
+    MEANNINGS = []
+
     for i in dictionary.keys():
         WORDS.append(i)
 
@@ -43,6 +31,19 @@ def wordle_main(dictionary):
     # Constantes
     width = 650
     height = 800
+
+    # Cores 
+    green = "#bcd246"
+    yellow = "#f4ad42"
+    red = "#c73d52"
+    grey = "#787c7e"
+    outline = "#d3d6da"
+    blue = "#4b8fbd"
+
+    # Definição da fonte usada no NCD
+    guessed_letter_font = pygame.font.Font("font/Montserrat-Black.otf", 50)
+    availabe_letter_font = pygame.font.Font("font/Montserrat-Black.otf", 25)
+    
     # screen = pygame.display.set_mode((width, height), pygame.RESIZABLE)
     screen = pygame.display.set_mode((width, height))
     wordle = pygame.image.load("img/wordle.png")
@@ -248,6 +249,9 @@ def wordle_main(dictionary):
                 elif event.key == pygame.K_BACKSPACE:
                     if len(current_guess_string) > 0:
                         delete_letter()
+                elif event.key == pygame.K_ESCAPE:
+                    pygame.quit()
+                    return
                 else:
                     key_pressed = event.unicode.upper()
                     if key_pressed in "QWERTYUIOPASDFGHJKLZXCVBNM" and key_pressed != "":
