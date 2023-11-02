@@ -195,12 +195,18 @@ def wordle_main(dictionary):
     def play_again():
         pygame.draw.rect(screen, blue, (10, 70, 1000, 800))
         play_again_font = pygame.font.Font("font/Montserrat-Black.otf", 40)
+        meanning_font = pygame.font.Font("font/Montserrat-Black.otf", 30)
+
         play_again_text = play_again_font.render("Aperte ENTER para jogar!", True, "white")
         play_again_rect = play_again_text.get_rect(center=(width/2, 700))
+
         word_was_text = play_again_font.render(f"The word was {correct_word}!", True, "white")
         word_was_rect = word_was_text.get_rect(center=(width/2, 100))
-        meanning_was_text = play_again_font.render(f"The meanning was {correct_meanning}!", True, "white")
+
+        meanning_was_text = meanning_font.render(f"The meanning was {correct_meanning}!", True, "white")
         meanning_was_rect = meanning_was_text.get_rect(center=(width/2, 200))
+        meanning_was_rect.left = 50
+
         screen.blit(word_was_text, word_was_rect)
         screen.blit(meanning_was_text, meanning_was_rect)
         screen.blit(play_again_text, play_again_rect)
