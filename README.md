@@ -60,10 +60,5 @@ Se você adivinhar a palavra corretamente antes de esgotar suas tentativas, voc�
 - [ ] Usar dicionário ao invés de lista na lista de palavras
 - [ ] Não desenhe diretamente na tela, mas em outra superfície. Em seguida, dimensione essa outra superfície para o tamanho da tela e cegue-a na tela. (solução para redmensionar)
 - [ ] Bug das letras depois de acertar
-
-
-<!-- 
-íóúéá
-êôâ
-ç
-ãõ -->
+- [ ] Escape dando problema na segunda vez
+- [ ] Tratar acentos: ['íóúéá','êôâ','ç','ãõ'] 

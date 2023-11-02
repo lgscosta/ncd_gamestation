@@ -59,7 +59,15 @@ def wordle_main(dictionary):
 
     # Escolha da palavra no dicionário
     correct_word = random.choice(WORDS)
+    correct_meanning = ""
 
+    index = 0
+    for i in WORDS:
+        if i == correct_word:
+            correct_meanning = MEANNINGS[index]
+            break
+        index += 1
+        
     # Inicialização da tela
     screen.fill(blue)
     screen.blit(bg, bg_frame)
@@ -185,13 +193,16 @@ def wordle_main(dictionary):
             game_result = "L"
 
     def play_again():
-        pygame.draw.rect(screen, blue, (10, 660, 1000, 600))
+        pygame.draw.rect(screen, blue, (10, 70, 1000, 800))
         play_again_font = pygame.font.Font("font/Montserrat-Black.otf", 40)
         play_again_text = play_again_font.render("Aperte ENTER para jogar!", True, "white")
         play_again_rect = play_again_text.get_rect(center=(width/2, 700))
-        word_was_text = play_again_font.render(f"The word was {correct_word}!", True, "black")
-        word_was_rect = word_was_text.get_rect(center=(width/2, 650))
+        word_was_text = play_again_font.render(f"The word was {correct_word}!", True, "white")
+        word_was_rect = word_was_text.get_rect(center=(width/2, 100))
+        meanning_was_text = play_again_font.render(f"The meanning was {correct_meanning}!", True, "white")
+        meanning_was_rect = meanning_was_text.get_rect(center=(width/2, 200))
         screen.blit(word_was_text, word_was_rect)
+        screen.blit(meanning_was_text, meanning_was_rect)
         screen.blit(play_again_text, play_again_rect)
         pygame.display.update()
 
@@ -243,6 +254,12 @@ def wordle_main(dictionary):
                     if game_result != "":
                         reset()
                         correct_word = random.choice(WORDS)
+                        index = 0
+                        for i in WORDS:
+                            if i == correct_word:
+                                correct_meanning = MEANNINGS[index]
+                                break
+                            index += 1
                     else:
                         if len(current_guess_string) == 5:
                             check_guess(current_guess)
@@ -250,6 +267,7 @@ def wordle_main(dictionary):
                     if len(current_guess_string) > 0:
                         delete_letter()
                 elif event.key == pygame.K_ESCAPE:
+                    pygame.display.quit()
                     pygame.quit()
                     return
                 else:
