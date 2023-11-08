@@ -61,4 +61,37 @@ Se você adivinhar a palavra corretamente antes de esgotar suas tentativas, voc�
 - [ ] Não desenhe diretamente na tela, mas em outra superfície. Em seguida, dimensione essa outra superfície para o tamanho da tela e cegue-a na tela. (solução para redmensionar)
 - [ ] Bug das letras depois de acertar
 - [ ] Escape dando problema na segunda vez
-- [ ] Tratar acentos: ['íóúéá','êôâ','ç','ãõ'] 
+- [ ] Tratar acentos: ['íóúéá','êôâ','ç','ãõ']
+
+
+# Jogo da Forca
+Um jogo de adivinhação de palavras de cinco letras.
+
+## Executando o Jogo
+```python3 ncd_gamestation.py```
+
+## Primeira Entrega (E1)
+Versão inicial, contendo apenas as seguintes funcionalidades:
+- [x] O jogo deve escolher uma palavra aleatória a partir de uma pequena lista de palavras.
+- [x] A tela de jogo deve ser exibida com as casas das letras, um espaço para letras usadas e a saúde do jogador na forca
+- [x] O jogador pode chutar letras, uma a uma.
+- [x] Há uma resposta visual para erros e acertos
+
+## Segunda Entrega (E2)
+- [ ] As palavras são escolhidas a partir de um arquivo banco de palavras.
+- [ ] Ao ganhar uma partida será exibida a definição formal da palavra.
+
+## Terceira Entrega (E3)
+- [ ] jogador pode escolher iniciar um novo jogo sem precisar abrir novamente o programa e há um menu.
+- [ ] Serão adicionados novos modos de jogo (casual, contra o tempo, N partidas em sequência)
+
+## Entrega Extra (E4)
+- [ ] Há um modo com pontuação e um ranking geral dos melhores jogadores.
+- [ ] Há um modo multiplayer local time attack
+
+## Como jogar
+O jogo é simples: você tem um numero X de vidas para adivinhar uma palavra. Cada cada erro consome uma vida e ao zerar você perde, o jogo fornece feedback sobre acertos e erros.
+Se você adivinhar a palavra corretamente antes de esgotar suas vidas, você vence!
+
+## Desenvolvedor
+- Gabriel Luiz de Oliveira Paschoal
