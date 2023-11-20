@@ -1,11 +1,8 @@
 import pygame
 import sys
 import random
-
-# Espaçamento e tamanho de letra 
-letter_x_spacing = 85
-letter_y_spacing = 12
-letter_size = 75
+from letter import Letter
+from indicator import Indicator
 
 # Variáveis Globais
 guesses_count = 0
@@ -73,55 +70,7 @@ def wordle_main(dictionary):
     screen.blit(bg, bg_frame)
     screen.blit(wordle, wordle_frame)
     pygame.display.update()
-
-    # Objeto Letra 
-    class Letter:
-        def __init__(self, text, bg_position):
-            # Initializes all the variables, including text, color, position, size, etc.
-            self.bg_color = "white" # Cor de fundo da letra
-            self.text_color = "black" # Cor da letra
-            self.bg_position = bg_position # Posição do quadrado em relação ao fundo
-            self.bg_x = bg_position[0] # Posição x
-            self.bg_y = bg_position[1] # Posição y
-            self.bg_rect = (bg_position[0], self.bg_y, letter_size, letter_size) # Quadrado da letra
-            self.text = text # Conteúdo ou a letra em si
-            self.text_position = (self.bg_x+36, self.bg_position[1]+34) # A posição da letra
-            self.text_surface = guessed_letter_font.render(self.text, True, self.text_color) # Renderização da letra
-            self.text_rect = self.text_surface.get_rect(center=self.text_position) # Retângulo delimitador
-
-        # Função que aceita uma letra 
-        def draw(self):
-            pygame.draw.rect(screen, self.bg_color, self.bg_rect)
-            if self.bg_color == "white":
-                pygame.draw.rect(screen, blue, self.bg_rect, 3)
-            self.text_surface = guessed_letter_font.render(self.text, True, self.text_color)
-            screen.blit(self.text_surface, self.text_rect)
-            pygame.display.update()
-
-        # Função que deleta uma letra 
-        def delete(self):
-            # Fills the letter's spot with the default square, emptying it.
-            pygame.draw.rect(screen, "white", self.bg_rect)
-            pygame.draw.rect(screen, outline, self.bg_rect, 3)
-            pygame.display.update()
-
-    class Indicator:
-        def __init__(self, x, y, letter):
-            # Initializes variables such as color, size, position, and letter.
-            self.x = x
-            self.y = y
-            self.text = letter
-            self.rect = (self.x, self.y, 40, 40)
-            self.bg_color = outline
-
-        def draw(self):
-            # Puts the indicator and its text on the screen at the desired position.
-            pygame.draw.rect(screen, self.bg_color, self.rect, 0, 3)
-            self.text_surface = availabe_letter_font.render(self.text, True, "white")
-            self.text_rect = self.text_surface.get_rect(center=(self.x+20, self.y+20))
-            screen.blit(self.text_surface, self.text_rect)
-            pygame.display.update()
-
+    
     def initialize_indicators():
         indicator_x = 103
         indicator_y = 660
@@ -230,8 +179,8 @@ def wordle_main(dictionary):
         # Creates a new letter and adds it to the guess.
         global current_guess_string, current_letter_bg_x
         current_guess_string += key_pressed
-        new_letter = Letter(key_pressed, (current_letter_bg_x, guesses_count*100+letter_y_spacing+60))
-        current_letter_bg_x += letter_x_spacing
+        new_letter = Letter(key_pressed, (current_letter_bg_x, guesses_count*100+Letter.letter_y_spacing+60))
+        current_letter_bg_x += Letter.letter_x_spacing
         guesses[guesses_count].append(new_letter)
         current_guess.append(new_letter)
         for guess in guesses:
@@ -245,7 +194,7 @@ def wordle_main(dictionary):
         guesses[guesses_count].pop()
         current_guess_string = current_guess_string[:-1]
         current_guess.pop()
-        current_letter_bg_x -= letter_x_spacing
+        current_letter_bg_x -= Letter.letter_x_spacing
 
     initialize_indicators()
     while True:
