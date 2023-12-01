@@ -1,4 +1,4 @@
-file = open('dictionary.txt','r')
+file = open('dictionary/dictionary.txt','r')
 linhas = file.read().split("\n")
 
 palavras = []
@@ -11,7 +11,7 @@ for i  in linhas:
 
 dicionario_ncd = dict(zip(palavras, significados))
 
-def wordle():
+def wordle_dict():
     palavras_wordle = []
     significados_wordle = []
 
@@ -22,5 +22,5 @@ def wordle():
 
     return dict(zip(palavras_wordle, significados_wordle))      
 
-def hangman():
+def hangman_dict():
     return dicionario_ncd

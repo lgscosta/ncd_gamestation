@@ -38,7 +38,7 @@ Versão inicial, contendo apenas as seguintes funcionalidades:
 
 ## Terceira Entrega (E3)
 - [x] O jogo deve ter um dicionário de palavras de 5 letras que tenha conceitos de cidadania digital.
-- [ ] O jogo deve mostrar uma mensagem de vitória ou derrota quando o jogador adivinhar a palavra ou esgotar suas tentativas e o significado da palavra.
+- [x] O jogo deve mostrar uma mensagem de vitória ou derrota quando o jogador adivinhar a palavra ou esgotar suas tentativas e o significado da palavra.
 
 ## Entrega Extra (E4)
 - [ ] O jogo deve ter uma versão de dueto, onde tenta-se adivinhar duas palavras simultaneamente.
@@ -56,12 +56,13 @@ Se você adivinhar a palavra corretamente antes de esgotar suas tentativas, voc�
 - Luana Gabriele de Sousa Costa
 
 ### Verificar:
-- [ ] Usar a função reset antes de começar o loop principal ao invés de usar cada comando.
-- [ ] Usar dicionário ao invés de lista na lista de palavras
-- [ ] Não desenhe diretamente na tela, mas em outra superfície. Em seguida, dimensione essa outra superfície para o tamanho da tela e cegue-a na tela. (solução para redmensionar)
+- [x] Usar a função reset antes de começar o loop principal ao invés de usar cada comando.
+- [x] Usar dicionário ao invés de lista na lista de palavras
+- [x] Não desenhe diretamente na tela, mas em outra superfície. Em seguida, dimensione essa outra superfície para o tamanho da tela e fixe-a na tela. (solução para redmensionar)
 - [ ] Bug das letras depois de acertar
-- [ ] Escape dando problema na segunda vez
-- [ ] Tratar acentos: ['íóúéá','êôâ','ç','ãõ']
+- [x] Escape dando problema na segunda vez
+- [x] Tratar acentos: ['íóúéá','êôâ','ç','ãõ']
+- [x] Criar pop-up de inicio de jogo
 
 
 # Jogo da Forca
