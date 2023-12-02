@@ -25,6 +25,11 @@ white = "#ffffff"
 
 screen.fill(purple)
 
+cid = pygame.image.load("img/gamestation_cid.png")
+cid = pygame.transform.scale_by(cid, 0.3)
+cid_frame = cid.get_rect(center=(320,150))
+screen.blit(cid, cid_frame)
+
 wordle = pygame.image.load("img/wordle2.png")
 wordle = pygame.transform.scale_by(wordle, 0.09)
 wordle_frame = wordle.get_rect(center=(325,300))
@@ -76,7 +81,7 @@ def executar_wordle_classico():
     os.system("python3 regras_wordle_classico.py")
 
 def executar_wordle_dueto():
-    os.system("python3 regras_wordle_classico.py")
+    os.system("python3 regras_wordle_dueto.py")
 
 # Função para executar wordle2.py
 def executar_forca_classico():
