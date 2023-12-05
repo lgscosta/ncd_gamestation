@@ -233,27 +233,6 @@ def play_again():
     screen.blit(play_again_text, play_again_rect)
     pygame.display.update()
 
-def rules():
-    pygame.draw.rect(screen, blue, (10, 70, 1000, 800))
-    play_again_font = pygame.font.Font("font/Montserrat-Black.otf", 40)
-    meanning_font = pygame.font.Font("font/Montserrat-Black.otf", 30)
-
-    play_again_text = play_again_font.render("Aperte ENTER para jogar!", True, blue2)
-    play_again_rect = play_again_text.get_rect(center=(width/2, 700))
-
-    word_was_text = play_again_font.render(f"A palavra era!", True, "white")
-    word_was_rect = word_was_text.get_rect(center=(width/2, 410))
-
-    won = pygame.image.load("img/won.png")
-    won = pygame.transform.scale_by(won, 0.1)
-    won_frame = won.get_rect(center=(318, 240))
-    screen.blit(won, won_frame)
-
-    screen.blit(word_was_text, word_was_rect)
-    screen.blit(play_again_text, play_again_rect)
-    pygame.display.update()
-
-
 def reset():
     # Resets all global variables to their default states.
     global guesses_count, correct_word, guesses, current_guess, current_guess_string, game_result

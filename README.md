@@ -42,7 +42,7 @@ Versão inicial, contendo apenas as seguintes funcionalidades:
 
 ## Entrega Extra (E4)
 - [ ] O jogo deve ter uma versão de dueto, onde tenta-se adivinhar duas palavras simultaneamente.
-- [ ] O jogo deve ter dicas.
+- [ ] O jogo deve ter uma plataforma de entrada dos modos.
 
 ## Como jogar
 O jogo é simples: você tem seis tentativas para adivinhar uma palavra de cinco letras. Cada vez que você insere uma palavra, o jogo fornece feedback sobre a posição e a presença das letras na palavra secreta.

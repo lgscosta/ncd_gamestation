@@ -6,16 +6,24 @@ from dictionary.words import *
 # Espaçamento e tamanho de letra 
 letter_x_spacing = 85
 letter_y_spacing = 12
+
+# letter_x_spacing2 = 85
+# letter_y_spacing2 = 12
+
 letter_size = 75
 
 # Variáveis Globais
 guesses_count = 0
 guesses = [[]] * 6
+guesses2 = [[]] * 6
 current_guess = []
+current_guess2 = []
 current_guess_string = ""
 current_letter_bg_x = 200
+current_letter_bg_x2 = 700
 indicators = []
 game_result = ""
+
 
 dicty = wordle_dict()
 
@@ -55,7 +63,6 @@ wordle = pygame.transform.scale_by(wordle, 0.1)
 wordle_frame = wordle.get_rect(center=(656,30))
 bg = pygame.image.load("img/background.png")
 bg_frame = bg.get_rect(center=(908, 361))
-
 bg2 = pygame.image.load("img/background.png")
 bg2_frame = bg2.get_rect(center=(408, 361))
 
@@ -104,6 +111,7 @@ class Letter:
             pygame.draw.rect(screen, blue, self.bg_rect, 3)
         self.text_surface = guessed_letter_font.render(self.text, True, self.text_color)
         screen.blit(self.text_surface, self.text_rect)
+
         pygame.display.update()
 
     # Função que deleta uma letra 
@@ -157,7 +165,7 @@ def initialize_indicators():
         indicator_x += 43
 
 def check_guess(guess_to_check):
-    global current_guess, current_guess_string, guesses_count, current_letter_bg_x, game_result
+    global current_guess, current_guess2, current_guess_string, guesses_count, current_letter_bg_x, current_letter_bg_x2, game_result
     game_decided = False
     for i in range(5):
         lowercase_letter = guess_to_check[i].text.lower()
@@ -194,14 +202,16 @@ def check_guess(guess_to_check):
     
     guesses_count += 1
     current_guess = []
+    current_guess2 = []
     current_guess_string = ""
     current_letter_bg_x = 200
+    current_letter_bg_x2 = 700
 
     if guesses_count == 6 and game_result == "":
         game_result = "L"
 
 def play_again():
-    pygame.draw.rect(screen, blue, (10, 70, 1000, 800))
+    pygame.draw.rect(screen, blue, (10, 70, 1300, 800))
     play_again_font = pygame.font.Font("font/Montserrat-Black.otf", 40)
     meanning_font = pygame.font.Font("font/Montserrat-Black.otf", 30)
 
@@ -237,30 +247,9 @@ def play_again():
     screen.blit(play_again_text, play_again_rect)
     pygame.display.update()
 
-def rules():
-    pygame.draw.rect(screen, blue, (10, 70, 1000, 800))
-    play_again_font = pygame.font.Font("font/Montserrat-Black.otf", 40)
-    meanning_font = pygame.font.Font("font/Montserrat-Black.otf", 30)
-
-    play_again_text = play_again_font.render("Aperte ENTER para jogar!", True, blue2)
-    play_again_rect = play_again_text.get_rect(center=(width/2, 700))
-
-    word_was_text = play_again_font.render(f"A palavra era!", True, "white")
-    word_was_rect = word_was_text.get_rect(center=(width/2, 410))
-
-    won = pygame.image.load("img/won.png")
-    won = pygame.transform.scale_by(won, 0.1)
-    won_frame = won.get_rect(center=(318, 240))
-    screen.blit(won, won_frame)
-
-    screen.blit(word_was_text, word_was_rect)
-    screen.blit(play_again_text, play_again_rect)
-    pygame.display.update()
-
-
 def reset():
     # Resets all global variables to their default states.
-    global guesses_count, correct_word, guesses, current_guess, current_guess_string, game_result
+    global guesses_count, correct_word, guesses, guesses2, current_guess, current_guess2, current_guess_string, game_result
     screen.fill(blue)
     screen.blit(bg, bg_frame)
     screen.blit(bg2, bg2_frame)
@@ -268,15 +257,18 @@ def reset():
     initialize_indicators()
     guesses_count = 0
     guesses = [[]] * 6
+    guesses2 = [[]] * 6
     current_guess = []
+    current_guess2 = []
     current_guess_string = ""
     game_result = ""
     pygame.display.update()
 
 def create_new_letter():
     # Creates a new letter and adds it to the guess.
-    global current_guess_string, current_letter_bg_x
+    global current_guess_string, current_letter_bg_x, current_letter_bg_x2
     current_guess_string += key_pressed
+
     new_letter = Letter(key_pressed, (current_letter_bg_x, guesses_count*100+letter_y_spacing+60))
     current_letter_bg_x += letter_x_spacing
     guesses[guesses_count].append(new_letter)
@@ -285,14 +277,28 @@ def create_new_letter():
         for letter in guess:
             letter.draw()
 
+    new_letter2 = Letter(key_pressed, (current_letter_bg_x2, guesses_count*100+letter_y_spacing+60))
+    current_letter_bg_x2 += letter_x_spacing
+    guesses2[guesses_count].append(new_letter2)
+    current_guess2.append(new_letter2)
+    for guess in guesses2:
+        for letter in guess:
+            letter.draw()
+
 def delete_letter():
     # Deletes the last letter from the guess.
-    global current_guess_string, current_letter_bg_x
+    global current_guess_string, current_letter_bg_x, current_letter_bg_x2
     guesses[guesses_count][-1].delete()
     guesses[guesses_count].pop()
     current_guess_string = current_guess_string[:-1]
     current_guess.pop()
     current_letter_bg_x -= letter_x_spacing
+
+    guesses2[guesses_count][-1].delete()
+    guesses2[guesses_count].pop()
+    current_guess_string = current_guess_string[:-1]
+    current_guess2.pop()
+    current_letter_bg_x2 -= letter_x_spacing
 
 initialize_indicators()
 
@@ -317,6 +323,7 @@ while True:
                 else:
                     if len(current_guess_string) == 5:
                         check_guess(current_guess)
+                        # check_guess(current_guess2)
             elif event.key == pygame.K_BACKSPACE:
                 if len(current_guess_string) > 0:
                     delete_letter()
