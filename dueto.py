@@ -14,6 +14,7 @@ letter_size = 75
 
 # Variáveis Globais
 guesses_count = 0
+guesses_count2 = 0
 guesses = [[]] * 6
 guesses2 = [[]] * 6
 current_guess = []
@@ -22,7 +23,9 @@ current_guess_string = ""
 current_letter_bg_x = 200
 current_letter_bg_x2 = 700
 indicators = []
+indicators2 = []
 game_result = ""
+game_result2 = ""
 
 
 dicty = wordle_dict()
@@ -51,6 +54,8 @@ outline = "#d3d6da"
 blue = "#4b8fbd"
 blue2 = "#77c6ff"
 blue3 = "#144970"
+blue4 = "#0d2b3b"
+
 
 # Definição da fonte usada no NCD
 guessed_letter_font = pygame.font.Font("font/Montserrat-Black.otf", 50)
@@ -75,10 +80,23 @@ pygame.display.set_icon(icon)
 correct_word = random.choice(WORDS)
 correct_meanning = ""
 
+correct_word2 = random.choice(WORDS)
+correct_meanning2 = ""
+
+while correct_word2 == correct_word:
+    correct_word2 = random.choice(WORDS)
+
 index = 0
 for i in WORDS:
     if i == correct_word:
         correct_meanning = MEANNINGS[index]
+        break
+    index += 1
+
+index = 0
+for i in WORDS:
+    if i == correct_word2:
+        correct_meanning2 = MEANNINGS[index]
         break
     index += 1
     
@@ -139,7 +157,8 @@ class Indicator:
         pygame.display.update()
 
 def initialize_indicators():
-    indicator_x = 430
+    # primeiro
+    indicator_x = 192
     indicator_y = 660
 
     for letter in "QWERTYUIOP":
@@ -148,7 +167,7 @@ def initialize_indicators():
         new_indicator.draw()
         indicator_x += 43
     indicator_y += 46
-    indicator_x = 450
+    indicator_x = 212
 
     for letter in "ASDFGHJKL":
         new_indicator = Indicator(indicator_x, indicator_y, letter)
@@ -156,7 +175,7 @@ def initialize_indicators():
         new_indicator.draw()
         indicator_x += 43
     indicator_y += 46
-    indicator_x = 492
+    indicator_x = 254
 
     for letter in "ZXCVBNM":
         new_indicator = Indicator(indicator_x, indicator_y, letter)
@@ -164,51 +183,118 @@ def initialize_indicators():
         new_indicator.draw()
         indicator_x += 43
 
-def check_guess(guess_to_check):
-    global current_guess, current_guess2, current_guess_string, guesses_count, current_letter_bg_x, current_letter_bg_x2, game_result
+    # segundo
+    indicator_x = 694
+    indicator_y = 660
+
+    for letter in "QWERTYUIOP":
+        new_indicator = Indicator(indicator_x, indicator_y, letter)
+        indicators2.append(new_indicator)
+        new_indicator.draw()
+        indicator_x += 43
+    indicator_y += 46
+    indicator_x = 714
+
+    for letter in "ASDFGHJKL":
+        new_indicator = Indicator(indicator_x, indicator_y, letter)
+        indicators2.append(new_indicator)
+        new_indicator.draw()
+        indicator_x += 43
+    indicator_y += 46
+    indicator_x = 756
+
+    for letter in "ZXCVBNM":
+        new_indicator = Indicator(indicator_x, indicator_y, letter)
+        indicators2.append(new_indicator)
+        new_indicator.draw()
+        indicator_x += 43
+
+def check_guess(guess_to_check, guess_to_check2):
+    global current_guess, current_guess2, current_guess_string, guesses_count, guesses_count2, current_letter_bg_x, current_letter_bg_x2, game_result, game_result2
     game_decided = False
-    for i in range(5):
-        lowercase_letter = guess_to_check[i].text.lower()
-        if lowercase_letter in correct_word:
-            if lowercase_letter == correct_word[i]:
-                guess_to_check[i].bg_color = green
-                for indicator in indicators:
-                    if indicator.text == lowercase_letter.upper():
-                        indicator.bg_color = green
-                        indicator.draw()
-                guess_to_check[i].text_color = "white"
-                if not game_decided:
-                    game_result = "W"
+    game_decided2 = False
+
+    # primeira palavra
+    if game_result != "W":
+        for i in range(5):
+            lowercase_letter = guess_to_check[i].text.lower()
+            if lowercase_letter in correct_word:
+                if lowercase_letter == correct_word[i]:
+                    guess_to_check[i].bg_color = green
+                    for indicator in indicators:
+                        if indicator.text == lowercase_letter.upper():
+                            indicator.bg_color = green
+                            indicator.draw()
+                    guess_to_check[i].text_color = "white"
+                    if not game_decided:
+                        game_result = "W"
+                else:
+                    guess_to_check[i].bg_color = yellow
+                    for indicator in indicators:
+                        if indicator.text == lowercase_letter.upper():
+                            indicator.bg_color = yellow
+                            indicator.draw()
+                    guess_to_check[i].text_color = "white"
+                    game_result = ""
+                    game_decided = True
             else:
-                guess_to_check[i].bg_color = yellow
+                guess_to_check[i].bg_color = grey
                 for indicator in indicators:
                     if indicator.text == lowercase_letter.upper():
-                        indicator.bg_color = yellow
+                        indicator.bg_color = red
                         indicator.draw()
                 guess_to_check[i].text_color = "white"
                 game_result = ""
                 game_decided = True
-        else:
-            guess_to_check[i].bg_color = grey
-            for indicator in indicators:
-                if indicator.text == lowercase_letter.upper():
-                    indicator.bg_color = red
-                    indicator.draw()
-            guess_to_check[i].text_color = "white"
-            game_result = ""
-            game_decided = True
-        guess_to_check[i].draw()
-        pygame.display.update()
+            guess_to_check[i].draw()
+            pygame.display.update()
     
+    # segunda palavra
+    if game_result2 != "W":
+        for i in range(5):
+            lowercase_letter = guess_to_check2[i].text.lower()
+            if lowercase_letter in correct_word2:
+                if lowercase_letter == correct_word2[i]:
+                    guess_to_check2[i].bg_color = green
+                    for indicator in indicators2:
+                        if indicator.text == lowercase_letter.upper():
+                            indicator.bg_color = green
+                            indicator.draw()
+                    guess_to_check2[i].text_color = "white"
+                    if not game_decided2:
+                        game_result2 = "W"
+                else:
+                    guess_to_check2[i].bg_color = yellow
+                    for indicator in indicators2:
+                        if indicator.text == lowercase_letter.upper():
+                            indicator.bg_color = yellow
+                            indicator.draw()
+                    guess_to_check2[i].text_color = "white"
+                    game_result2 = ""
+                    game_decided2 = True
+            else:
+                guess_to_check2[i].bg_color = grey
+                for indicator in indicators2:
+                    if indicator.text == lowercase_letter.upper():
+                        indicator.bg_color = red
+                        indicator.draw()
+                guess_to_check2[i].text_color = "white"
+                game_result2 = ""
+                game_decided2 = True
+            guess_to_check2[i].draw()
+            pygame.display.update()
+
     guesses_count += 1
+    guesses_count2 += 1
     current_guess = []
     current_guess2 = []
     current_guess_string = ""
     current_letter_bg_x = 200
     current_letter_bg_x2 = 700
 
-    if guesses_count == 6 and game_result == "":
+    if guesses_count == 6 and (game_result == "" or game_result2 == ""):
         game_result = "L"
+        game_result2 = "L"
 
 def play_again():
     pygame.draw.rect(screen, blue, (10, 70, 1300, 800))
@@ -218,8 +304,14 @@ def play_again():
     play_again_text = play_again_font.render("Aperte ENTER para jogar!", True, blue2)
     play_again_rect = play_again_text.get_rect(center=(width/2, 700))
 
-    word_was_text = play_again_font.render(f"A palavra era {correct_word}!", True, "white")
+    word_was_text = play_again_font.render(f"As palavras eram {correct_word} e {correct_word2}!", True, "white")
     word_was_rect = word_was_text.get_rect(center=(width/2, 410))
+
+    word1_was_text = meanning_font.render(f"{correct_word.upper()}", True, blue4)
+    word1_was_rect = word1_was_text.get_rect(center=(width/4, 480))
+
+    word2_was_text = meanning_font.render(f"{correct_word2.upper()}", True, blue4)
+    word2_was_rect = word1_was_text.get_rect(center=((3*width)/4, 480))
 
     meanning_buffer = []
     meanning_buffer = [correct_meanning[i:i+32] for i in range(0, len(correct_meanning), 32)]
@@ -228,82 +320,103 @@ def play_again():
 
     for meanning in meanning_buffer:
         meanning_was_text = meanning_font.render(f"{meanning}", True, blue3)
-        meanning_was_rect = meanning_was_text.get_rect(center=(width/2, 480+count))
+        meanning_was_rect = meanning_was_text.get_rect(center=(width/4, 520+count))
         screen.blit(meanning_was_text, meanning_was_rect)
         count += 40
 
-    if game_result == "L":
-        lost = pygame.image.load("img/lost.png")
-        lost = pygame.transform.scale_by(lost, 0.1)
-        lost_frame = lost.get_rect(center=(650, 250))
-        screen.blit(lost, lost_frame)
-    elif game_result == "W":
+    meanning_buffer = [correct_meanning2[i:i+32] for i in range(0, len(correct_meanning2), 32)]
+
+    count = 0
+
+    for meanning in meanning_buffer:
+        meanning_was_text = meanning_font.render(f"{meanning}", True, blue3)
+        meanning_was_rect = meanning_was_text.get_rect(center=((3*width)/4, 520+count))
+        screen.blit(meanning_was_text, meanning_was_rect)
+        count += 40
+
+    if game_result == "W" and game_result2 == "W" :
         won = pygame.image.load("img/won.png")
         won = pygame.transform.scale_by(won, 0.1)
         won_frame = won.get_rect(center=(650, 240))
         screen.blit(won, won_frame)
+    else:
+        lost = pygame.image.load("img/lost.png")
+        lost = pygame.transform.scale_by(lost, 0.1)
+        lost_frame = lost.get_rect(center=(650, 250))
+        screen.blit(lost, lost_frame)
 
     screen.blit(word_was_text, word_was_rect)
+    screen.blit(word1_was_text, word1_was_rect)
+    screen.blit(word2_was_text, word2_was_rect)
     screen.blit(play_again_text, play_again_rect)
     pygame.display.update()
 
+# ok
 def reset():
     # Resets all global variables to their default states.
-    global guesses_count, correct_word, guesses, guesses2, current_guess, current_guess2, current_guess_string, game_result
+    global guesses_count, guesses_count2, correct_word, correct_word2, guesses, guesses2, current_guess, current_guess2, current_guess_string, game_result, game_result2
     screen.fill(blue)
     screen.blit(bg, bg_frame)
     screen.blit(bg2, bg2_frame)
     screen.blit(wordle, wordle_frame)
     initialize_indicators()
     guesses_count = 0
+    guesses_count2 = 0
     guesses = [[]] * 6
     guesses2 = [[]] * 6
     current_guess = []
     current_guess2 = []
     current_guess_string = ""
     game_result = ""
+    game_result2 = ""
     pygame.display.update()
 
+# ok
 def create_new_letter():
     # Creates a new letter and adds it to the guess.
-    global current_guess_string, current_letter_bg_x, current_letter_bg_x2
+    global current_guess_string, current_letter_bg_x, current_letter_bg_x2, game_result, game_result2
     current_guess_string += key_pressed
 
-    new_letter = Letter(key_pressed, (current_letter_bg_x, guesses_count*100+letter_y_spacing+60))
-    current_letter_bg_x += letter_x_spacing
-    guesses[guesses_count].append(new_letter)
-    current_guess.append(new_letter)
-    for guess in guesses:
-        for letter in guess:
-            letter.draw()
+    if game_result != "W":
+        new_letter = Letter(key_pressed, (current_letter_bg_x, guesses_count*100+letter_y_spacing+60))
+        current_letter_bg_x += letter_x_spacing
+        guesses[guesses_count].append(new_letter)
+        current_guess.append(new_letter)
+        for guess in guesses:
+            for letter in guess:
+                letter.draw()
 
-    new_letter2 = Letter(key_pressed, (current_letter_bg_x2, guesses_count*100+letter_y_spacing+60))
-    current_letter_bg_x2 += letter_x_spacing
-    guesses2[guesses_count].append(new_letter2)
-    current_guess2.append(new_letter2)
-    for guess in guesses2:
-        for letter in guess:
-            letter.draw()
+    if game_result2 != "W":
+        new_letter2 = Letter(key_pressed, (current_letter_bg_x2, guesses_count2*100+letter_y_spacing+60))
+        current_letter_bg_x2 += letter_x_spacing
+        guesses2[guesses_count2].append(new_letter2)
+        current_guess2.append(new_letter2)
+        for guess in guesses2:
+            for letter in guess:
+                letter.draw()
 
+# ok
 def delete_letter():
     # Deletes the last letter from the guess.
-    global current_guess_string, current_letter_bg_x, current_letter_bg_x2
-    guesses[guesses_count][-1].delete()
-    guesses[guesses_count].pop()
-    current_guess_string = current_guess_string[:-1]
-    current_guess.pop()
-    current_letter_bg_x -= letter_x_spacing
+    global current_guess_string, current_letter_bg_x, current_letter_bg_x2, game_result, game_result2
+    
+    if game_result != "W":
+        guesses[guesses_count][-1].delete()
+        guesses[guesses_count].pop()
+        current_guess_string = current_guess_string[:-1]
+        current_guess.pop()
+        current_letter_bg_x -= letter_x_spacing
 
-    guesses2[guesses_count][-1].delete()
-    guesses2[guesses_count].pop()
-    current_guess_string = current_guess_string[:-1]
-    current_guess2.pop()
-    current_letter_bg_x2 -= letter_x_spacing
+    if game_result2 != "W":
+        guesses2[guesses_count2][-1].delete()
+        guesses2[guesses_count2].pop()
+        current_guess2.pop()
+        current_letter_bg_x2 -= letter_x_spacing
 
 initialize_indicators()
 
 while True:
-    if game_result != "":
+    if game_result != "" and game_result2 != "":
         play_again()
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -311,7 +424,7 @@ while True:
             sys.exit()
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_RETURN:
-                if game_result != "":
+                if game_result != "" and game_result2 != "":
                     reset()
                     correct_word = random.choice(WORDS)
                     index = 0
@@ -320,10 +433,21 @@ while True:
                             correct_meanning = MEANNINGS[index]
                             break
                         index += 1
+
+                    correct_word2 = random.choice(WORDS)
+
+                    while correct_word2 == correct_word:
+                        correct_word2 = random.choice(WORDS)
+                    
+                    index = 0
+                    for i in WORDS:
+                        if i == correct_word2:
+                            correct_meanning2 = MEANNINGS[index]
+                            break
+                        index += 1
                 else:
                     if len(current_guess_string) == 5:
-                        check_guess(current_guess)
-                        # check_guess(current_guess2)
+                        check_guess(current_guess, current_guess2)
             elif event.key == pygame.K_BACKSPACE:
                 if len(current_guess_string) > 0:
                     delete_letter()
