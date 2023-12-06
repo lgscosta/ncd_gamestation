@@ -11,6 +11,8 @@ height = 800
 
 # Cria a janela
 screen = pygame.display.set_mode((width, height))
+icon = pygame.image.load("img/rules.png")
+icon = pygame.transform.scale_by(icon, 0.6)
 pygame.display.set_caption("Pygame Page")
 
 # Carrega o wallpaper
@@ -30,7 +32,7 @@ while running:
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_RETURN:
                 # Executa o arquivo "wordle.py"
-                os.system("python3 wordle.py")
+                # os.system("python3 wordle.py")
                 pygame.quit()
                 sys.exit()
 

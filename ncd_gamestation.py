@@ -46,7 +46,7 @@ font_normal = pygame.font.Font("font/Montserrat-Black.otf", 36)
 font_rules = pygame.font.Font("font/Montserrat-Black.otf", 20)
 
 # Função para desenhar botões
-def desenhar_botao(x, y, largura, altura, texto, acao=None):
+def desenhar_botao(x, y, largura, altura, texto):
     if texto == "Regras":
         pygame.draw.rect(screen, white, (x, y, largura, altura))
         texto_surface = font_rules.render(texto, True, purple)
@@ -69,42 +69,54 @@ def desenhar_botao(x, y, largura, altura, texto, acao=None):
     texto_retangulo = texto_surface.get_rect(center=(x + largura / 2, y + altura / 2))
     screen.blit(texto_surface, texto_retangulo)
 
-    # Verifica se o botão foi clicado
-    mouse_x, mouse_y = pygame.mouse.get_pos()
-    click, _, _ = pygame.mouse.get_pressed()
-
-    if x < mouse_x < x + largura and y < mouse_y < y + altura:
-        if click == 1 and acao:
-            acao()
-
 def executar_wordle_classico():
     os.system("python3 regras_wordle_classico.py")
+    os.system("python3 wordle.py")
 
 def executar_wordle_dueto():
     os.system("python3 regras_wordle_dueto.py")
+    os.system("python3 dueto.py")
 
 # Função para executar wordle2.py
 def executar_forca_classico():
-    os.system("python3 regras_wordle_classico.py")
-
+    print("ok")
 # Função para executar regras.py
 def executar_forca_dueto():
-    os.system("python3 regras_wordle_classico.py")
+    print("ok")
+
+desenhar_botao(65, 350, 250, 70, "Clássico")
+desenhar_botao(335, 350, 250, 70, "Dueto")
+desenhar_botao(65, 530, 250, 70, "Clássico")
+desenhar_botao(335, 530, 250, 70, "Multiplayer")
 
 # Loop principal
 while True:
-    # screen.fill(purple)
-
     # Desenha os botões
-    desenhar_botao(65, 350, 250, 70, "Clássico", executar_wordle_classico)
-    desenhar_botao(335, 350, 250, 70, "Dueto", executar_wordle_dueto)
-    desenhar_botao(65, 530, 250, 70, "Clássico", executar_wordle_classico)
-    desenhar_botao(335, 530, 250, 70, "Multiplayer", executar_forca_classico)
-    desenhar_botao(275, 670, 100, 50, "Regras", executar_forca_dueto)
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
+        if event.type == pygame.MOUSEBUTTONDOWN:
+                if event.button == 1:  # 1 representa o botão esquerdo do mouse
+                    mouse_x, mouse_y = pygame.mouse.get_pos()
+                    # classico wordle 
+                    if 65 < mouse_x < 65 + 250 and 350 < mouse_y < 350 + 70:
+                        executar_wordle_classico()
+                    # classico wordle 
+                    if 335 < mouse_x < 335 + 250 and 350 < mouse_y < 350 + 70:
+                        executar_wordle_dueto()
+                    # classico forca 
+                    if 65 < mouse_x < 65 + 250 and 530 < mouse_y < 530 + 70:
+                        executar_forca_classico()
+                    # classico forca 
+                    if 335 < mouse_x < 335 + 250 and 530 < mouse_y < 530 + 70:
+                        executar_forca_classico()
+
+    # desenhar_botao(65, 350, 250, 70, "Clássico", executar_wordle_classico)
+    # desenhar_botao(335, 350, 250, 70, "Dueto", executar_wordle_dueto)
+    # desenhar_botao(65, 530, 250, 70, "Clássico", executar_wordle_classico)
+    # desenhar_botao(335, 530, 250, 70, "Multiplayer", executar_forca_classico)
+    # desenhar_botao(275, 670, 100, 50, "Regras", executar_forca_dueto)
 
     pygame.display.flip()
