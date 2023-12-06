@@ -79,7 +79,7 @@ def executar_wordle_dueto():
 
 # Função para executar wordle2.py
 def executar_forca_classico():
-    print("ok")
+    os.system("python3 regras_forca_classico.py")
 # Função para executar regras.py
 def executar_forca_dueto():
     print("ok")
