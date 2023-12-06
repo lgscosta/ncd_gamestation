@@ -13,6 +13,7 @@ height = 800
 screen = pygame.display.set_mode((width, height))
 icon = pygame.image.load("img/rules.png")
 icon = pygame.transform.scale_by(icon, 0.6)
+pygame.display.set_icon(icon)
 pygame.display.set_caption("Pygame Page")
 
 # Carrega o wallpaper

@@ -296,6 +296,30 @@ def check_guess(guess_to_check, guess_to_check2):
         game_result = "L"
         game_result2 = "L"
 
+def buffer_maker(meanning):
+    base = meanning.split(" ")
+    buffer = []
+    sentence = ""
+    first = 0
+    last = len(base)
+
+    for i in base:
+        if len(i)+len(sentence)+1 <= 32:
+            if first == 0:
+                sentence = sentence + i
+            else:
+                sentence = sentence + " " + i
+        else:
+            buffer.append(sentence)
+            sentence = ""
+            sentence = sentence + i
+        if last == first+1:
+            buffer.append(sentence)
+
+        first += 1
+
+    return buffer
+
 def play_again():
     pygame.draw.rect(screen, blue, (10, 70, 1300, 800))
     play_again_font = pygame.font.Font("font/Montserrat-Black.otf", 40)
@@ -313,9 +337,7 @@ def play_again():
     word2_was_text = meanning_font.render(f"{correct_word2.upper()}", True, blue4)
     word2_was_rect = word1_was_text.get_rect(center=((3*width)/4, 480))
 
-    meanning_buffer = []
-    meanning_buffer = [correct_meanning[i:i+32] for i in range(0, len(correct_meanning), 32)]
-
+    meanning_buffer = buffer_maker(correct_meanning)
     count = 0
 
     for meanning in meanning_buffer:
@@ -324,7 +346,8 @@ def play_again():
         screen.blit(meanning_was_text, meanning_was_rect)
         count += 40
 
-    meanning_buffer = [correct_meanning2[i:i+32] for i in range(0, len(correct_meanning2), 32)]
+    # meanning_buffer = [correct_meanning2[i:i+32] for i in range(0, len(correct_meanning2), 32)]
+    meanning_buffer = buffer_maker(correct_meanning2)
 
     count = 0
 

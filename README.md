@@ -59,7 +59,7 @@ Se você adivinhar a palavra corretamente antes de esgotar suas tentativas, voc�
 - [x] Usar a função reset antes de começar o loop principal ao invés de usar cada comando.
 - [x] Usar dicionário ao invés de lista na lista de palavras
 - [x] Não desenhe diretamente na tela, mas em outra superfície. Em seguida, dimensione essa outra superfície para o tamanho da tela e fixe-a na tela. (solução para redmensionar)
-- [ ] Bug das letras depois de acertar
+- [x] Bug das letras depois de acertar
 - [x] Escape dando problema na segunda vez
 - [x] Tratar acentos: ['íóúéá','êôâ','ç','ãõ']
 - [x] Criar pop-up de inicio de jogo

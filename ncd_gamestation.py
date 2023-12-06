@@ -113,10 +113,4 @@ while True:
                     if 335 < mouse_x < 335 + 250 and 530 < mouse_y < 530 + 70:
                         executar_forca_classico()
 
-    # desenhar_botao(65, 350, 250, 70, "Clássico", executar_wordle_classico)
-    # desenhar_botao(335, 350, 250, 70, "Dueto", executar_wordle_dueto)
-    # desenhar_botao(65, 530, 250, 70, "Clássico", executar_wordle_classico)
-    # desenhar_botao(335, 530, 250, 70, "Multiplayer", executar_forca_classico)
-    # desenhar_botao(275, 670, 100, 50, "Regras", executar_forca_dueto)
-
     pygame.display.flip()

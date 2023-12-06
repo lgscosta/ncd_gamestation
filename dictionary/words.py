@@ -21,6 +21,3 @@ def wordle_dict():
             significados_wordle.append(dicionario_ncd[i])
 
     return dict(zip(palavras_wordle, significados_wordle))      
-
-def hangman_dict():
-    return dicionario_ncd

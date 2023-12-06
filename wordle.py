@@ -196,6 +196,30 @@ def check_guess(guess_to_check):
     if guesses_count == 6 and game_result == "":
         game_result = "L"
 
+def buffer_maker():
+    base = correct_meanning.split(" ")
+    buffer = []
+    sentence = ""
+    first = 0
+    last = len(base)
+
+    for i in base:
+        if len(i)+len(sentence)+1 <= 32:
+            if first == 0:
+                sentence = sentence + i
+            else:
+                sentence = sentence + " " + i
+        else:
+            buffer.append(sentence)
+            sentence = ""
+            sentence = sentence + i
+        if last == first+1:
+            buffer.append(sentence)
+
+        first += 1
+
+    return buffer
+
 def play_again():
     pygame.draw.rect(screen, blue, (10, 70, 1000, 800))
     play_again_font = pygame.font.Font("font/Montserrat-Black.otf", 40)
@@ -207,8 +231,7 @@ def play_again():
     word_was_text = play_again_font.render(f"A palavra era {correct_word}!", True, "white")
     word_was_rect = word_was_text.get_rect(center=(width/2, 410))
 
-    meanning_buffer = []
-    meanning_buffer = [correct_meanning[i:i+32] for i in range(0, len(correct_meanning), 32)]
+    meanning_buffer = buffer_maker()
 
     count = 0
 
@@ -289,13 +312,16 @@ while True:
                             break
                         index += 1
                 else:
-                    if len(current_guess_string) == 5:
-                        check_guess(current_guess)
+                    if game_result == "":
+                        if len(current_guess_string) == 5:
+                            check_guess(current_guess)
             elif event.key == pygame.K_BACKSPACE:
-                if len(current_guess_string) > 0:
-                    delete_letter()
+                if game_result == "":
+                    if len(current_guess_string) > 0:
+                        delete_letter()
             else:
-                key_pressed = event.unicode.upper()
-                if key_pressed in "QWERTYUIOPASDFGHJKLZXCVBNM" and key_pressed != "":
-                    if len(current_guess_string) < 5:
-                        create_new_letter()
+                if game_result == "":
+                    key_pressed = event.unicode.upper()
+                    if key_pressed in "QWERTYUIOPASDFGHJKLZXCVBNM" and key_pressed != "":
+                            if len(current_guess_string) < 5:
+                                create_new_letter()
