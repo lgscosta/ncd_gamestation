@@ -446,6 +446,9 @@ while True:
             pygame.quit()
             sys.exit()
         if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_ESCAPE:
+                pygame.quit()
+                sys.exit()
             if event.key == pygame.K_RETURN:
                 if game_result != "" and game_result2 != "":
                     reset()

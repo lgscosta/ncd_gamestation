@@ -9,7 +9,7 @@ pygame.init()
 width = 650
 heigth = 800
 screen = pygame.display.set_mode((width, heigth))
-icon = pygame.image.load("img/gamestation.png")
+icon = pygame.image.load("img/gameStation.png")
 icon = pygame.transform.scale_by(icon, 0.6)
 pygame.display.set_caption("NCD GameStation")
 pygame.display.set_icon(icon)
@@ -97,6 +97,10 @@ while True:
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_ESCAPE:
+                pygame.quit()
+                sys.exit()
         if event.type == pygame.MOUSEBUTTONDOWN:
                 if event.button == 1:  # 1 representa o botão esquerdo do mouse
                     mouse_x, mouse_y = pygame.mouse.get_pos()
