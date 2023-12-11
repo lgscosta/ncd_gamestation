@@ -1,13 +1,10 @@
 idoso: Pessoa de idade avançada.
-insta: Abreviação comum para o Instagram, uma rede social de compartilhamento de fotos e vídeos.  
 etica: Princípios morais que guiam o comportamento humano. 
 senha: Combinação secreta de caracteres usada para proteger contas online. 
 virus: Pequeno programa malicioso que pode danificar computadores ou dispositivos. 
 midia: Meios de comunicação, como jornais, rádio, televisão e internet. 
-click: Ação de pressionar o botão do mouse ou tocar na tela para selecionar ou interagir com algo. 
 pixel: Ponto individual em uma tela, composto por cores para formar imagens. 
 gamer: Pessoa que joga videogames. 
-tweet: Mensagem curta postada no Twitter, geralmente com até 280 caracteres. 
 dados: Informações coletadas e armazenadas para diversos fins. 
 emoji: Pequenas imagens ou ícones usados para expressar emoções ou ideias em mensagens. 
 video: Sequência de imagens em movimento, geralmente com som.
@@ -21,20 +18,20 @@ regra: Diretriz ou instrução que deve ser seguida.
 nuvem: Armazenamento de dados online, acessível pela internet.
 email: Mensagem eletrônica enviada pela internet.
 mouse: Dispositivo de entrada de computador usado para mover o cursor na tela.
-cyber: Prefixo relacionado à tecnologia e ao mundo digital.
-linux: Sistema operacional de código aberto.
-skype: Aplicativo de comunicação por vídeo e voz.
 flash: Uma fonte de luz intensa usada para iluminar uma cena ou objeto ao tirar uma foto em condições de pouca luz.
-adobe: Empresa de software que desenvolve programas como o Photoshop e o Acrobat.
-cache: Local de armazenamento temporário de dados para acelerar o acesso.
-steam: Plataforma de distribuição de jogos online.
-mysql: Sistema de gerenciamento de banco de dados.
 drive: Armazenamento online da Google.
 smart: Inteligente ou conectado à internet, como "smartphones" ou "smart TVs".
-ifood: Plataforma de entrega de comida online.
-shein: Empresa de moda e comércio eletrônico.
-canva: Ferramenta de design gráfico online.
 redes: Estruturas interconectadas, como redes sociais ou redes de computadores.
-clips: Pequenos trechos de áudio ou vídeo.
-gvbus: Nome do sistema de transporte público da Grande Vitória.
 jogos: Atividades de entretenimento competitivas ou recreativas.
+igual: Ter tratamento equitativo e sem discriminação, garantindo os mesmos direitos e oportunidades a todos, independentemente da idade.
+justo: Baseado em princípios de equidade e imparcialidade, proporcionando condições igualitárias para todos os cidadãos.
+honra: Respeito e reconhecimento devido aos idosos por sua experiência, contribuições e sabedoria acumulada ao longo dos anos.
+ordem: Manutenção de uma sociedade organizada e estruturada, garantindo que os direitos dos idosos sejam preservados e respeitados.
+uniao: Colaboração e solidariedade entre as gerações, promovendo um senso de comunidade e apoio mútuo entre os cidadãos, jovens e idosos.
+poder: Capacidade de fazer algo.
+digno: Reconhecimento e respeito pela dignidade inerente de cada idoso, assegurando que sejam tratados com integridade e consideração.
+sabio: Alguém com capacidade de aconselhar com base em experiências e vivência.
+saude: Estado do ser humano de estar bem fisicamente, mentalmente e espiritualmente.
+idade: Métrica para contar os anos de uma pessoa.
+valor: Um preço inerente a algo ou alguém (porém seu valor é grande demais pra medir com um preço).
+viver: Além de estar vivo, aproveitar os momentos, sorrisos e oportunidades que a vida proporciona.

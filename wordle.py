@@ -72,6 +72,8 @@ for i in WORDS:
         break
     index += 1
     
+# correct_word = "igual"
+# correct_meanning = "Ter tratamento equitativo e sem discriminação, garantindo os mesmos direitos e oportunidades a todos, independentemente da idade."
 # Inicialização da tela
 screen.fill(blue)
 screen.blit(bg, bg_frame)
