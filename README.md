@@ -55,14 +55,22 @@ Se você adivinhar a palavra corretamente antes de esgotar suas tentativas, voc�
 ## Desenvolvedor
 - Luana Gabriele de Sousa Costa
 
-### Verificar:
-- [x] Usar a função reset antes de começar o loop principal ao invés de usar cada comando.
-- [x] Usar dicionário ao invés de lista na lista de palavras
-- [x] Não desenhe diretamente na tela, mas em outra superfície. Em seguida, dimensione essa outra superfície para o tamanho da tela e fixe-a na tela. (solução para redmensionar)
-- [x] Bug das letras depois de acertar
-- [x] Escape dando problema na segunda vez
-- [x] Tratar acentos: ['íóúéá','êôâ','ç','ãõ']
-- [x] Criar pop-up de inicio de jogo
+### Limitações Relevantes:
+- O jogo tem problema com acentos.
+- O jogo é pesado.
+- Os elementos da tela são fixos, não permitindo o redimensionamento da tela.
+
+### Propostas de Melhoria:
+- O jogo poderia aceitar caracteres especiais (acentos).
+- O jogo poderia ser mais leve, ele utiliza muito do processador.
+- O jogo poderia conter dicas, mesmo não sendo algo do jogo original, em contexto educativo seria útil.
+- O jogo poderia ter a tela redimensionável.
+- O jogo poderia fazer algum tipo de filtro de palavras (no momento só reconhece letras, não sabendo se são palavras ou não).
+- O jogo poderia ter uma melhor modularização do código.
+- O jogo poderia conter uma interação com os indicadores (teclado) que há embaixo (vários colegas que testaram o jogo tentaram clicar nas letras ao invés de digitar).
+- A plataforma poderia conter mais jogos.
+- Poderia ser criado um novo modo: quarteto.
+- O jogo poderia ter bancos de palavras separados por tema, permitindo a escolha de tema no início.
 
 
 # Jogo da Forca
@@ -79,8 +87,8 @@ Versão inicial, contendo apenas as seguintes funcionalidades:
 - [x] Há uma resposta visual para erros e acertos
 
 ## Segunda Entrega (E2)
-- [ ] As palavras são escolhidas a partir de um arquivo banco de palavras.
-- [ ] Ao ganhar uma partida será exibida a definição formal da palavra.
+- [x] As palavras são escolhidas a partir de um arquivo banco de palavras.
+- [x] Ao ganhar uma partida será exibida a definição formal da palavra.
 
 ## Terceira Entrega (E3)
 - [ ] jogador pode escolher iniciar um novo jogo sem precisar abrir novamente o programa e há um menu.
